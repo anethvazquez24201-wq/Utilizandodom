@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda de sushi</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #fce4ec;
+            text-align: center;
+            padding: 30px;
+        }
+        h1 {
+            color: #17aecd;
+        }
+        .menu {
+            margin: 20px;
+        }
+        button {
+            background-color: #4789be;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #resultado {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sushi rolling</h1></h1>
+
+    <div class="menu">
+        <button onclick="mostrarOpciones(1)">Menu</button>
+        <button onclick="mostrarOpciones(2)">Horario</button>
+        <button onclick="mostrarOpciones(3)">Pedidos</button>
+        <button onclick="mostrarOpciones(4)">Ubicación</button>
+    </div>
+
+    <div id="resultado">Selecciona lo que quieras:</div>
+
+    <script>
+        function mostrarOpciones(opcion) {
+            var mensaje = "";
+            switch (opcion) {
+                case 1:
+                    mensaje = "Menu: Sushi mar y tierra, Sushi bolas, Palitos de pescado, Sushi vegetariano, guiso, etc. ";
+                    break;
+                case 2:
+                    mensaje = "Horario: Nos encontramos disponibles de Lunes a Viernes de las 02:00am a 08:00pm y los fines de semana de 1:00am a 10:00.";
+                    break;
+                case 3:
+                    mensaje = "Pedidos: Pedidos a domicilio al num. 6681256299 ";
+                    break;
+                case 4:
+                    mensaje = "Ubicación: Mochis Sinaloa calle Saragoza ";
+                    break;
+                default:
+                    mensaje = "El valor no es válido";
+                    break;
+            }
+            document.getElementById("resultado").innerHTML = mensaje;
+        }
+    </script>
+
+</body>
+  </html>

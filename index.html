@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda de sushi</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #AFEEEE;
+            text-align: center;
+            padding: 30px;
+        }
+        h2 {
+            color: #BA55D3;
+        }
+        h1 {
+            color: #BA55D3;
+        }
+        .menu {
+            margin: 20px;
+        }
+        button {
+            background-color: #9370DB;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #6a3fb5; }
+        #resultado {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        img { width: 200px; border-radius: 12px; margin: 5px; cursor: pointer; transition: 0.3s; }
+        table { margin: 10px auto; border-collapse: collapse; width: 90%; }
+        th, td { border: 2px solid #9370DB; padding: 8px; }
+        th { background: #9370DB; color: white; }
+        input, select { padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #ccc; font-size: 16px; width: 80%; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px; background: #f3efff; margin: 5px; border-radius: 8px; cursor: pointer; }
+        a { color: #6a3fb5; font-weight: bold; }
+    </style>
+</head>
+
+<!-- a) CUERPO: onload, teclado -->
+<body onload="bienvenida()" onkeydown="moverImagen(event)">
+
+    <!-- b) ENCABEZADOS Y PÁRRAFOS: mouse, color, tamaño, posición -->
+    <h1 id="titulo" onclick="this.innerHTML=' Sushi\'s rolling '" onmouseover="this.style.color='#6a3fb5'; this.style.fontSize='38px'" onmouseout="this.style.color='#BA55D3'; this.style.fontSize='32px'">Sushi's rolling</h1>
+
+    <h1 id="Titulo">¡¡Realiza tu pedido ya!!</h1>
+
+    <div class="menu">
+        <button onclick="mostrarOpciones(1)">Menu</button>
+        <button onclick="mostrarOpciones(2)">Horario</button>
+        <button onclick="mostrarOpciones(3)">Pedidos</button>
+        <button onclick="mostrarOpciones(4)">Ubicación</button>
+    </div>
+
+    <div id="resultado">Selecciona lo que quieras:</div>
+
+<script>
+    function bienvenida(){ console.log("Bienvenido a Sushi's rolling"); }
+
+    function mostrarOpciones(opcion) {
+        var mensaje = "";
+        switch (opcion) {
+            case 1:
+                // c) LISTAS, e) IMÁGENES, f) TABLAS
+                mensaje = "<h2>Menu</h2>" +
+                "<img src='https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=500' onmouseover=\"this.style.width='250px'\" onmouseout=\"this.style.width='200px'\" onclick=\"alert('Sushi mar y tierra')\">" +
+                "<img src='https://images.unsplash.com/photo-1553621042-f6e147245754?w=500' onmouseover=\"this.style.width='250px'\" onmouseout=\"this.style.width='200px'\" onclick=\"alert('Sushi bolas')\">" +
+                "<ul>" +
+                "<li onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='#f3efff'\" onclick=\"this.style.textDecoration='line-through'\">Sushi mar y tierra</li>" +
+                "<li onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='#f3efff'\" onclick=\"this.style.textDecoration='line-through'\">Sushi bolas</li>" +
+                "<li onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='#f3efff'\" onclick=\"this.style.textDecoration='line-through'\">Palitos de pescado</li>" +
+                "<li onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='#f3efff'\" onclick=\"this.style.textDecoration='line-through'\">Sushi vegetariano</li>" +
+                "<li onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='#f3efff'\" onclick=\"this.style.textDecoration='line-through'\">Guiso</li>" +
+                "</ul>" +
+                "<table>" +
+                "<tr><th>Platillo</th><th>Precio</th></tr>" +
+                "<tr onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='white'\"><td>Mar y tierra</td><td>$150</td></tr>" +
+                "<tr onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='white'\"><td>Sushi bolas</td><td>$130</td></tr>" +
+                "<tr onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='white'\"><td>Palitos de pescado</td><td>$110</td></tr>" +
+                "</table>";
+                break;
+            case 2:
+                mensaje = "<h2>Horario</h2>" +
+                "<p>Nos encontramos disponibles de Lunes a Viernes de las 02:00am a 08:00pm y los fines de semana de 1:00am a 10:00pm</p>" +
+                "<ul>" +
+                "<li onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='#f3efff'\">Lunes a Viernes: 2:00pm - 8:00pm</li>" +
+                "<li onmouseover=\"this.style.background='#e6dcff'\" onmouseout=\"this.style.background='#f3efff'\">Sábado y Domingo: 1:00pm - 10:00pm</li>" +
+                "</ul>";
+                break;
+            case 3:
+                // g) FORMULARIOS: botones, cajas de texto, mouse, teclado
+                mensaje = "<h2>Pedidos</h2>" +
+                "<p>Pedidos a domicilio al num. 6681256299</p>" +
+                "<form onsubmit='pedir(event)'>" +
+                "<input type='text' id='nombre' placeholder='Tu nombre' onfocus=\"this.style.borderColor='#9370DB'\" onblur=\"this.style.borderColor='#ccc'\" onkeyup=\"document.getElementById('saludo').innerHTML=this.value\"><br>" +
+                "<p>Hola, <b id='saludo'>...</b></p>" +
+                "<select id='sushi' onchange='calcular()'><option value='150'>Mar y tierra - $150</option><option value='110'>Sushi bolas - $130</option><option value='110'>Palitos - $130</option></select><br>" +
+                "<input type='number' id='cant' value='1' min='1' onchange='calcular()' onkeyup='calcular()'><br>" +
+                "<p id='total' style='font-weight:bold'>Total: $150</p>" +
+                "<button type='submit'>Pedir Ahora</button>" +
+                "</form>";
+                break;
+            case 4:
+                // d) HIPERENLACES, e) IMÁGENES
+                mensaje = "<h2>Ubicación</h2>" +
+                "<p>Mochis Sinaloa calle Saragoza</p>" +
+                "<a href='https://www.google.com/maps/search/Mochis+Sinaloa+calle+Saragoza' target='_blank' onmouseover=\"this.style.fontSize='22px'\" onmouseout=\"this.style.fontSize='18px'\" onfocus=\"this.style.background='yellow'\"> Ver en Google Maps</a><br><br>" +
+                "<img id='imgMover' src='https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=500' style='position:relative;left:0px'><br>" +
+                "<p>Usa las flechas ⬅️ ➡️ del teclado para mover la imagen</p>";
+                break;
+            default:
+                mensaje = "El valor no es válido";
+                break;
+        }
+        document.getElementById("resultado").innerHTML = mensaje;
+    }
+
+    function calcular(){
+        var p = document.getElementById("sushi").value;
+        var c = document.getElementById("cant").value;
+        document.getElementById("total").innerHTML = "Total: $" + (p*c);
+    }
+    function pedir(e){
+        e.preventDefault();
+        alert("¡Gracias " + document.getElementById("nombre").value + "! Tu pedido a domicilio va en camino  - 6681256299");
+    }
+    function moverImagen(e){
+        var img = document.getElementById("imgMover");
+        if(!img) return;
+        var left = parseInt(img.style.left);
+        if(e.key == "ArrowRight") img.style.left = (left+20)+"px";
+        if(e.key == "ArrowLeft") img.style.left = (left-20)+"px";
+    }
+</script>
+
+</body>
+</html>
